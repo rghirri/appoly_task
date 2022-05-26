@@ -7,16 +7,19 @@
   <h1 class="text-center my-3">Appoly Task</h1>
   <div class="card card-default">
    <div class="card-header">
-    Fruit List
+    Create Item
    </div>
    <div class="card-body">
-    <ul style="list-style-type:circle;" class="list-group">
-     @foreach ($fruits as $fruit)
-     <li class="list-group-item">
-      <x-fruit-item :fruit="$fruit" />
-     </li>
-     @endforeach
-     <a href="/update"><button class="btn btn-primary mt-3">Update List</button></a>
+    <form action="/store" method="POST">
+     @csrf
+     <div class="form-group">
+      <label for="label">Item</label>
+      <input type="text" class="form-control" name="label">
+     </div>
+     <div class="form-group">
+      <button type="submit" class="btn btn-primary mt-3">Create Item</button>
+     </div>
+    </form>
    </div>
   </div>
  </div>

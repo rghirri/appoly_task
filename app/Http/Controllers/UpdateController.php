@@ -24,7 +24,7 @@ class UpdateController extends Controller
      */
     public function create()
     {
-        //
+        return view('update.create');
     }
 
     /**
@@ -35,7 +35,16 @@ class UpdateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd(request()->all());
+        $data = request()->all();
+
+        $fruit = new Fruit();
+
+        $fruit->label = $data['label'];
+
+        $fruit->save();
+
+        return redirect('/');
     }
 
     /**
@@ -44,9 +53,12 @@ class UpdateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($fruitId)
     {
-        //
+       $fruit = Fruit::find($fruitId);
+       
+       return view('update.show')->with('fruit', $fruit);
+
     }
 
     /**
@@ -55,9 +67,11 @@ class UpdateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($fruitId)
     {
-        //
+        $fruit = Fruit::find($fruitId);
+       
+       return view('update.edit')->with('fruit', $fruit);
     }
 
     /**
@@ -67,9 +81,18 @@ class UpdateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($fruitId)
     {
-        //
+
+        $data = request()->all();
+
+        $fruit = Fruit::find($fruitId);
+
+        $fruit->label = $data['label'];
+
+        $fruit->save();
+       
+       return redirect('/');
     }
 
     /**

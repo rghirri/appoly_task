@@ -18,23 +18,14 @@
   <div class="row">
    <div class="col-3"></div>
    <div class="col-6 mt-5">
-    <h1 class="text-center my-5">Appoly Task</h1>
+    <h1 class="text-center my-5">Fruit Item</h1>
 
     <div class="card card-default my-5">
      <div class="card-header">
-      Fruit List
-     </div>
-     <div class="card-body">
-      <ul style="list-style-type:circle;" class="list-group">
-       @foreach($fruits as $fruit)
-       <li class="list-group-item">
-        {{ $fruit->label }}
-        <a href="/update/{{ $fruit->id }}"><button class="btn btn-primary btn-sm float-end">View</button></a>
-       </li>
-       @endforeach
-      </ul>
+      {{ $fruit->label }}
      </div>
     </div>
+    <a href="/update/{{ $fruit->id }}/edit"><button class="btn btn-primary">Edit Item</button></a>
    </div>
    <div class="col-3"></div>
   </div>

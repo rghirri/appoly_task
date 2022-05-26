@@ -26,4 +26,14 @@ Route::get('/', function () {
 });
 
 
-Route::get('/update', [UpdateController::class, 'index']);
+Route::get('update', [UpdateController::class, 'index']);
+
+Route::get('update/{update}', [UpdateController::class, 'show']);
+
+Route::get('create', [UpdateController::class, 'create']);
+
+Route::post('store', [UpdateController::class, 'store']);
+
+Route::get('update/{update}/edit', [UpdateController::class, 'edit']);
+
+Route::post('update-item/{update}/update', [UpdateController::class, 'update']);
