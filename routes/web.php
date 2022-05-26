@@ -26,7 +26,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('update', [UpdateController::class, 'index']);
+Route::resource('update', UpdateController::class);
 
 Route::get('update/{update}', [UpdateController::class, 'show']);
 

@@ -35,8 +35,12 @@ class UpdateController extends Controller
      */
     public function store(Request $request)
     {
-        //dd(request()->all());
-        $data = request()->all();
+        
+        $this->validate($request, [
+            'label' => 'required'
+        ]);
+
+        $data = $request->all();
 
         $fruit = new Fruit();
 
@@ -81,10 +85,10 @@ class UpdateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($fruitId)
+    public function update(Request $request, $fruitId)
     {
 
-        $data = request()->all();
+        $data = $request->all();
 
         $fruit = Fruit::find($fruitId);
 
