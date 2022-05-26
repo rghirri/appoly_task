@@ -37,7 +37,7 @@ class UpdateController extends Controller
     {
         
         $this->validate($request, [
-            'label' => 'required'
+            'label' => 'required|min:6|max:12'
         ]);
 
         $data = $request->all();
@@ -87,6 +87,9 @@ class UpdateController extends Controller
      */
     public function update(Request $request, $fruitId)
     {
+        $this->validate($request, [
+            'label' => 'required|min:6|max:12'
+        ]);
 
         $data = $request->all();
 
