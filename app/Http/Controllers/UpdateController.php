@@ -37,7 +37,7 @@ class UpdateController extends Controller
     {
         
         $this->validate($request, [
-            'label' => 'required|min:6|max:12'
+            'label' => 'required|min:6'
         ]);
 
         $data = $request->all();
@@ -48,6 +48,8 @@ class UpdateController extends Controller
 
         $fruit->save();
 
+        session()->flash('success', 'Item added successfully.');
+
         return redirect('/');
     }
 
@@ -57,10 +59,9 @@ class UpdateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($fruitId)
+    public function show(Fruit $fruit)
     {
-       $fruit = Fruit::find($fruitId);
-       
+  
        return view('update.show')->with('fruit', $fruit);
 
     }
@@ -71,10 +72,8 @@ class UpdateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($fruitId)
+    public function edit(Fruit $fruit)
     {
-        $fruit = Fruit::find($fruitId);
-       
        return view('update.edit')->with('fruit', $fruit);
     }
 
@@ -85,19 +84,19 @@ class UpdateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $fruitId)
+    public function update(Request $request, Fruit $fruit)
     {
         $this->validate($request, [
-            'label' => 'required|min:6|max:20'
+            'label' => 'required|min:6'
         ]);
 
         $data = $request->all();
 
-        $fruit = Fruit::find($fruitId);
-
         $fruit->label = $data['label'];
 
         $fruit->save();
+
+        session()->flash('success', 'Item updated successfully.');
        
        return redirect('/');
     }
@@ -108,9 +107,8 @@ class UpdateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($fruitId)
+    public function destroy(Fruit $fruit)
     {
-        $fruit = Fruit::find($fruitId);
 
         $fruit->delete();
 

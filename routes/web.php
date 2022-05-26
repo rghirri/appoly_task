@@ -25,17 +25,16 @@ Route::get('/', function () {
     
 });
 
+Route::get('update', [UpdateController::class, 'index']);
 
-Route::resource('update', UpdateController::class);
-
-Route::get('update/{update}', [UpdateController::class, 'show']);
+Route::get('update/{fruit}', [UpdateController::class, 'show']);
 
 Route::get('create', [UpdateController::class, 'create']);
 
 Route::post('store', [UpdateController::class, 'store']);
 
-Route::get('update/{update}/edit', [UpdateController::class, 'edit']);
+Route::get('update/{fruit}/edit', [UpdateController::class, 'edit']);
 
-Route::post('update-item/{update}/update', [UpdateController::class, 'update']);
+Route::post('update-item/{fruit}/update', [UpdateController::class, 'update']);
 
-Route::get('update/{update}/delete', [UpdateController::class, 'destroy']);
+Route::get('update/{fruit}/delete', [UpdateController::class, 'destroy']);
