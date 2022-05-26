@@ -37,3 +37,5 @@ Route::post('store', [UpdateController::class, 'store']);
 Route::get('update/{update}/edit', [UpdateController::class, 'edit']);
 
 Route::post('update-item/{update}/update', [UpdateController::class, 'update']);
+
+Route::get('update/{update}/delete', [UpdateController::class, 'destroy']);

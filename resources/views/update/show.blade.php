@@ -26,6 +26,7 @@
      </div>
     </div>
     <a href="/update/{{ $fruit->id }}/edit"><button class="btn btn-primary">Edit Item</button></a>
+    <a href="/update/{{ $fruit->id }}/delete"><button class="btn btn-danger">Delete Item</button></a>
    </div>
    <div class="col-3"></div>
   </div>
