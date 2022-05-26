@@ -88,7 +88,7 @@ class UpdateController extends Controller
     public function update(Request $request, $fruitId)
     {
         $this->validate($request, [
-            'label' => 'required|min:6|max:12'
+            'label' => 'required|min:6|max:20'
         ]);
 
         $data = $request->all();
